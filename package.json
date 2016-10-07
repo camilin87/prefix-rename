@@ -27,6 +27,7 @@
     "jasmine": "^2.5.2"
   },
   "dependencies": {
+    "async": "^2.0.1",
     "command-line-args": "^3.0.1",
     "global-console-prefix": "^2.0.0",
     "rfr": "^1.2.3",

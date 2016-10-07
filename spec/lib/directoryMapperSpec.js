@@ -8,15 +8,25 @@ describe("directoryMapper", () => {
     var seededError = null
     var mappedDirectory = null
 
+    var seededStatError = null
+    var itemsWhoseStatsWereRead = null
+
     beforeEach(() => {
         seededFiles = null
         seededError = null
         mappedDirectory = null
 
+        seededStatError = null
+        itemsWhoseStatsWereRead = []
+
         var fsStub = {
             readdir: (dir, callback) => {
                 mappedDirectory = dir
                 callback(seededError, seededFiles)
+            },
+            stat: (file, callback) => {
+                itemsWhoseStatsWereRead.push(file)
+                callback(seededStatError, {})
             }
         }
 
@@ -51,6 +61,25 @@ describe("directoryMapper", () => {
 
         mapper.getFiles("dir1").then(null, err => {
             expect(err).toBe("something went wrong")
+            done()
+        })
+    })
+
+    it ("reads the stats for each item", done => {
+        seededFiles = ["d1", "d2", "d3"]
+
+        mapper.getFiles("dir1").then(files => {
+            expect(itemsWhoseStatsWereRead).toEqual(seededFiles)
+            done()
+        })
+    })
+
+    it ("fails when stats could not be read", done => {
+        seededFiles = ["d1", "d2", "d3"]
+        seededStatError = "could not read stats"
+
+        mapper.getFiles("dir1").then(null, err => {
+            expect(err).toBe("could not read stats")
             done()
         })
     })
