@@ -1,0 +1,33 @@
+{
+  "name": "prefix-rename",
+  "version": "0.0.1-beta1",
+  "description": "Renames all the files that match a prefix. In the list of specified folders",
+  "scripts": {
+    "prestart": "npm i",
+    "start": "node main.js",
+    "test": "jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/camilin87/prefix-rename.git"
+  },
+  "keywords": [
+    "rename",
+    "prefix",
+    "files",
+    "folders"
+  ],
+  "author": "@camilin87",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/camilin87/prefix-rename/issues"
+  },
+  "homepage": "https://github.com/camilin87/prefix-rename#readme",
+  "devDependencies": {
+    "jasmine": "^2.5.2"
+  },
+  "dependencies": {
+    "global-console-prefix": "^2.0.0",
+    "rfr": "^1.2.3"
+  }
+}
