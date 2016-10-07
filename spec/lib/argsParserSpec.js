@@ -32,4 +32,15 @@ describe("argsParser", () => {
             done()
         })
     })
+
+    it ("fails when the dirs were not specified", done => {
+        seededParseResult = {
+            dirs: [],
+            prefixes: ["p1"]
+        }
+
+        parser.parse().then(null, err => {
+            done()
+        })
+    })
 })
