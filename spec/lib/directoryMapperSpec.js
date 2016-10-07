@@ -22,7 +22,7 @@ describe("directoryMapper", () => {
 
         getStatsCallback = f => {
             return {
-                isDirectory: () => false
+                isFile: () => true
             }
         }
         var fsStub = {
@@ -99,12 +99,12 @@ describe("directoryMapper", () => {
         getStatsCallback = f => {
             if (f === "dir1/d2"){
                 return {
-                    isDirectory: () => true
+                    isFile: () => false
                 }
             }
 
             return {
-                isDirectory: () => false
+                isFile: () => true
             }
         }
 
