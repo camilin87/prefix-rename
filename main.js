@@ -2,13 +2,13 @@ require("global-console-prefix")("[PREFIX_RENAME]");
 
 console.log("renaming files...")
 
-const commandLineArgs = require("command-line-args")
+var commandLineArgs = require("command-line-args")
 
-const optionDefinitions = [
+var optionDefinitions = [
     { name: "dirs", alias: 'd', type: String, multiple: true },
     { name: "prefixes", alias: 'p', type: String, multiple: true }
 ]
 
-const options = commandLineArgs(optionDefinitions)
+var options = commandLineArgs(optionDefinitions)
 
 console.log(options)
