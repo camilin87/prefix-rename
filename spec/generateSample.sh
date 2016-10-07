@@ -1,12 +1,30 @@
 #!/bin/bash
 
-rm -R -f ./tmp
-mkdir ./tmp
-touch ./tmp/f1.txt
-touch ./tmp/f2.txt
-touch ./tmp/a1.txt
-touch ./tmp/a2.txt
+rm -R -f ./tmp-int
+mkdir ./tmp-int
+touch ./tmp-int/f1.txt
+touch ./tmp-int/f2.txt
+touch ./tmp-int/a1.txt
+touch ./tmp-int/a2.txt
 
-npm start -- -d ./tmp -p f -r z
+npm start -- -d ./tmp-int -p f -r z
 
-rm -R -f ./tmp
+ls -1a ./tmp-int >> ./tmp-int/_actual.txt
+
+cat <<EOT >> ./tmp-int/_expected.txt
+.
+..
+_actual.txt
+a1.txt
+a2.txt
+z1.txt
+z2.txt
+EOT
+
+diff ./tmp-int/_expected.txt ./tmp-int/_actual.txt > ./tmp-int/_diff.txt
+
+echo "DifferencesStart"
+cat ./tmp-int/_diff.txt
+echo "DifferencesEnd"
+
+rm -R -f ./tmp-int
