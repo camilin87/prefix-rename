@@ -5,7 +5,8 @@
   "scripts": {
     "prestart": "npm i",
     "start": "node main.js",
-    "test": "jasmine"
+    "test": "jasmine",
+    "integration-test": "sh spec/generateSample.sh"
   },
   "repository": {
     "type": "git",
