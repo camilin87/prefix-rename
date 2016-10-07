@@ -26,6 +26,7 @@ describe("argsParser", () => {
 
         parser.parse().then(value => {
             expect(parsedOptions).toEqual([
+                { name: "debug", type: Boolean },
                 { name: "dir", alias: "d", type: String},
                 { name: "prefix", alias: "p", type: String },
                 { name: "rename", alias: "r", type: String }
