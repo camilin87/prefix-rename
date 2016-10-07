@@ -29,6 +29,7 @@
   "dependencies": {
     "command-line-args": "^3.0.1",
     "global-console-prefix": "^2.0.0",
-    "rfr": "^1.2.3"
+    "rfr": "^1.2.3",
+    "the-promise-factory": "^1.0.0"
   }
 }
