@@ -19,16 +19,16 @@ describe("argsParser", () => {
 
     it("reads the correct options", done => {
         seededParseResult = {
-            dirs: [ 'dir1', 'a second dir' ],
-            prefix: 'prefix1',
+            dirs: [ "dir1", "a second dir" ],
+            prefix: "prefix1",
             rename: "value1"
         }
 
         parser.parse().then(value => {
             expect(parsedOptions).toEqual([
-                { name: "dirs", alias: 'd', type: String, multiple: true },
-                { name: "prefix", alias: 'p', type: String },
-                { name: "rename", alias: 'r', type: String }
+                { name: "dirs", alias: "d", type: String, multiple: true },
+                { name: "prefix", alias: "p", type: String },
+                { name: "rename", alias: "r", type: String }
             ])
             expect(value).toEqual(seededParseResult)
             done()
