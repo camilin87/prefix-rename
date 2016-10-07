@@ -4,12 +4,15 @@ const rfr = require("rfr")
 const parser = rfr("lib/argsParser")()
 const mapper = rfr("lib/directoryMapper")()
 const changesCalculator = rfr("lib/changesCalculator")()
+const singleFileMoverFactory = rfr("lib/singleFileMoverFactory")()
 
 console.log("renaming files...")
 
 parser.parse().then(
     options => {
         console.log(options)
+
+        var singleFileMover = singleFileMoverFactory.create(options.debug)
 
         mapper.getFiles(options.dir).then(
             files => {
@@ -23,9 +26,11 @@ parser.parse().then(
                     options.prefix, options.rename, files
                 )
 
-                console.log("Operations")
+                // console.log("Operations")
                 renameOperations.forEach(o => {
-                    console.log(o)
+                    // console.log(o)
+                    singleFileMover
+                        .move(options.dir, o.input, o.output)
                 })
 
             }, err => {
