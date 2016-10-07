@@ -75,7 +75,11 @@ describe("directoryMapper", () => {
         seededFiles = ["d1", "d2", "d3"]
 
         mapper.getFiles("dir1").then(files => {
-            expect(itemsWhoseStatsWereRead).toEqual(seededFiles)
+            expect(itemsWhoseStatsWereRead).toEqual([
+                "dir1/d1",
+                "dir1/d2",
+                "dir1/d3"
+            ])
             done()
         })
     })
@@ -93,7 +97,7 @@ describe("directoryMapper", () => {
     it ("only returns the files", done => {
         seededFiles = ["d1", "d2", "d3"]
         getStatsCallback = f => {
-            if (f === "d2"){
+            if (f === "dir1/d2"){
                 return {
                     isDirectory: () => true
                 }
