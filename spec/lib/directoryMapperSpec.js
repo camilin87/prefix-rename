@@ -10,6 +10,7 @@ describe("directoryMapper", () => {
 
     var seededStatError = null
     var itemsWhoseStatsWereRead = null
+    var getStatsCallback = null
 
     beforeEach(() => {
         seededFiles = null
@@ -19,6 +20,7 @@ describe("directoryMapper", () => {
         seededStatError = null
         itemsWhoseStatsWereRead = []
 
+        getStatsCallback = f => {}
         var fsStub = {
             readdir: (dir, callback) => {
                 mappedDirectory = dir
@@ -26,7 +28,7 @@ describe("directoryMapper", () => {
             },
             stat: (file, callback) => {
                 itemsWhoseStatsWereRead.push(file)
-                callback(seededStatError, {})
+                callback(seededStatError, getStatsCallback(file))
             }
         }
 
