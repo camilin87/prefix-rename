@@ -20,13 +20,15 @@ describe("argsParser", () => {
     it("reads the correct options", done => {
         seededParseResult = {
             dirs: [ 'dir1', 'a second dir' ],
-            prefix: 'prefix1'
+            prefix: 'prefix1',
+            rename: "value1"
         }
 
         parser.parse().then(value => {
             expect(parsedOptions).toEqual([
                 { name: "dirs", alias: 'd', type: String, multiple: true },
-                { name: "prefix", alias: 'p', type: String }
+                { name: "prefix", alias: 'p', type: String },
+                { name: "rename", alias: 'r', type: String }
             ])
             expect(value).toEqual(seededParseResult)
             done()
@@ -36,7 +38,8 @@ describe("argsParser", () => {
     it ("fails when the dirs were not specified", done => {
         seededParseResult = {
             dirs: [],
-            prefix: "p1"
+            prefix: "p1",
+            rename: "value1"
         }
 
         parser.parse().then(null, err => {
@@ -44,10 +47,23 @@ describe("argsParser", () => {
         })
     })
 
-    it ("fails when the prefix were not specified", done => {
+    it ("fails when the prefix was not specified", done => {
         seededParseResult = {
             dirs: ["d1"],
-            prefix: ""
+            prefix: "",
+            rename: "value1"
+        }
+
+        parser.parse().then(null, err => {
+            done()
+        })
+    })
+
+    it ("fails when the rename parameter was not specified", done => {
+        seededParseResult = {
+            dirs: ["d1"],
+            prefix: "p1",
+            rename: ""
         }
 
         parser.parse().then(null, err => {
