@@ -1,14 +1,15 @@
 require("global-console-prefix")("[PREFIX_RENAME]");
 
+var rfr = require("rfr")
+var parser = rfr("lib/argsParser")()
+
 console.log("renaming files...")
 
-var commandLineArgs = require("command-line-args")
-
-var optionDefinitions = [
-    { name: "dirs", alias: 'd', type: String, multiple: true },
-    { name: "prefixes", alias: 'p', type: String, multiple: true }
-]
-
-var options = commandLineArgs(optionDefinitions)
-
-console.log(options)
+parser.parse().then(
+    options => {
+        console.log(options)
+        process.exit(0)
+    }, err => {
+        console.error(err, err.stack)
+        process.exit(1)
+    })
