@@ -20,7 +20,11 @@ describe("directoryMapper", () => {
         seededStatError = null
         itemsWhoseStatsWereRead = []
 
-        getStatsCallback = f => {}
+        getStatsCallback = f => {
+            return {
+                isDirectory: () => false
+            }
+        }
         var fsStub = {
             readdir: (dir, callback) => {
                 mappedDirectory = dir
@@ -85,4 +89,25 @@ describe("directoryMapper", () => {
             done()
         })
     })
+
+    it ("only returns the files", done => {
+        seededFiles = ["d1", "d2", "d3"]
+        getStatsCallback = f => {
+            if (f === "d2"){
+                return {
+                    isDirectory: () => true
+                }
+            }
+
+            return {
+                isDirectory: () => false
+            }
+        }
+
+        mapper.getFiles("dir1").then(files => {
+            expect(files).toEqual(["d1", "d3"])
+            done()
+        })
+    })
+
 })
