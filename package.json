@@ -1,10 +1,13 @@
 {
   "name": "prefix-rename",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Renames all the files that match a prefix. In the list of specified folders",
+  "bin": {
+    "prefix-rename": "./bin/prefix-rename"
+  },
   "scripts": {
     "prestart": "npm i",
-    "start": "node main.js",
+    "start": "node ./bin/prefix-rename",
     "test": "jasmine",
     "integration-test": "sh spec/generateSample.sh"
   },

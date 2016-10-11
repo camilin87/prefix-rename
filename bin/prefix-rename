@@ -1,3 +1,7 @@
+#!/usr/bin/env node
+
+'use strict'
+
 require("global-console-prefix")("[PREFIX_RENAME]");
 
 const rfr = require("rfr")

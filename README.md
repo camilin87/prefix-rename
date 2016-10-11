@@ -10,6 +10,6 @@ Renames the files that match a prefix
 
 ## Usage  
 
-    npm start -- -d dir1 -p prefix1 -r tttt1
+    prefix-rename -d dir1 -p prefix1 -r tttt1
 
 The above script will rename all the files from `dir1` whose name start with `prefix1` to start with `tttt1`  
