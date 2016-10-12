@@ -4,13 +4,12 @@
 
 require("global-console-prefix")("[PREFIX_RENAME]");
 
-const rfr = require("rfr")
-const program = rfr("lib/program")(
-    rfr("lib/argsParser")(),
-    rfr("lib/singleFileMoverFactory")(),
-    rfr("lib/fileMover"),
-    rfr("lib/changesCalculator")(),
-    rfr("lib/directoryMapper")()
+const program = require("../lib/program")(
+    require("../lib/argsParser")(),
+    require("../lib/singleFileMoverFactory")(),
+    require("../lib/fileMover"),
+    require("../lib/changesCalculator")(),
+    require("../lib/directoryMapper")()
 )
 
 console.log("renaming files...")

@@ -1,6 +1,6 @@
 {
   "name": "prefix-rename",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Renames all the files that match a prefix. In the list of specified folders",
   "bin": {
     "prefix-rename": "./bin/prefix-rename"
